@@ -105,9 +105,9 @@ def fight():
 
 # %%
 while True:
-    room = random.randint(1,2)
+    room = random.randint(1,3)
     if room == 1 :
-        print("\nYou enter a dank room covered in moss. It smells like the dead. \nThere is a chest in the room.")
+        print("\nYou enter a dank dungeon room covered in moss. It smells like the dead. There are skelletons chained up against the wall. \nThere is a chest in the room.")
         choice = input("Open the chest (Yes/No)")
         if choice == "Yes":
             print("You open the chest and...")
@@ -135,8 +135,10 @@ while True:
         monster = random.choice(monsters)
         print(f"\nYou enter a dank room with wet & shiny walls\nas you look around you spot a {monster}\nyou prepare to fight drawing your sword.")
         fight()
-        
-        
+    if room == 3:
+    	monster = random.choice(monsters)
+    	print(f"You enter a room covered in weird neon colours, and with weed, the numbers 69 and 420, a penis, the American flag, a gun, a camera.\nWait is that a {monster}, get ready for a fight.")
+        fight()
 
             
 
