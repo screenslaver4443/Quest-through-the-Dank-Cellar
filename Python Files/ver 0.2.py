@@ -60,7 +60,7 @@ sword = 1
 armor = 0
 item = 0
 #enemy's
-normalmonsters = ('skelly', 'zombie')
+normalmonsters = ('skelly', 'zombie', 'Ghost', 'ERROR')
 
 
 # %%
@@ -75,12 +75,22 @@ def fight():
     if monster == 'skelly':
     	mbonushealth = -1
     	mbonusdamage = 1
+    if monster == 'corruptboss':
+    	mbonusdamage = 2
+    	mbonushealth = 2
+    if monster == 'Ghost':
+    	mbonusdamage = -1
+    	mbonushealth = 5
+    if monster == 'ERROR':
+    	mbonusdamage = random.randint(-5,5)
+    	mbonushealth = random.randint(-5,5)
+    	
     	
     
     #calculatons
     guard = 0
     ehealth = 2 + roomstraveled + mbonushealth
-    edamage = roomstraveled - armor + mbonusdamage
+    edamage = 1+ roomstraveled - armor + mbonusdamage
     #beginning of the actual fight
     print(f"You engage the {monster}")
     strikeorder = random.randint(1,2) #determines who goes first
@@ -89,6 +99,7 @@ def fight():
         chealth -= edamage
     while chealth > 0 or ehealth > 0:  
         while True:
+        		#players turn and appropriate dialog.
             print("Its your turn")
             choice = input("What would you like to do (Attack, Guard)")
             if choice == "Attack" :
@@ -105,6 +116,7 @@ def fight():
         if chealth <= 0 :
             print("You died")
             print("Relaunch the game to try again")
+            print(f'You made it {roomstraveled} rooms')
             time.sleep(10)
             exit()
         if ehealth <= 0 :
@@ -118,7 +130,7 @@ def fight():
 
 # %%
 while True:
-    room = random.randint(1,3)
+    room = random.randint(1,3) #picks random room
     if room == 1 :
         print("\nYou enter a dank dungeon room covered in moss. It smells like the dead. There are skelletons chained up against the wall. \nThere is a chest in the room.")
         choice = input("Open the chest (Yes/No)")
@@ -154,6 +166,10 @@ while True:
     	print(f"You enter a room covered in weird neon colours, and with weed, the numbers 69 and 420, a penis, the American flag, a gun, a camera.\nWait is that a {monster}, get ready for a fight.")
     	fight()
     	roomstraveled =+ 1
-
+    if room == 4:
+    	monster = 'corruptboss' #custom boss for this room
+    	print('You enter a room covered in a purple and black checker pattern and before you stands a massive creature with black and purple fur, and it does not look happy to see a visitor.')
+    	fight()
+    
 
 

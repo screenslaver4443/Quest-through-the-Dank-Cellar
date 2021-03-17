@@ -68,7 +68,7 @@ def fight():
     chealth = mhealth
     guard = 0
     ehealth = 2+roomstraveled
-    edamage = roomstraveled - armor
+    edamage = 1+roomstraveled - armor
     print(f"You engage the {monster}")
     strikeorder = random.randint(1,2)
     if strikeorder == 1:
@@ -136,9 +136,9 @@ while True:
         print(f"\nYou enter a dank room with wet & shiny walls\nas you look around you spot a {monster}\nyou prepare to fight drawing your sword.")
         fight()
     if room == 3:
-    	monster = random.choice(monsters)
-    	print(f"You enter a room covered in weird neon colours, and with weed, the numbers 69 and 420, a penis, the American flag, a gun, a camera.\nWait is that a {monster}, get ready for a fight.")
-        fight()
+      monster = random.choice(monsters)
+      print(f"You enter a room covered in weird neon colours, and with weed, the numbers 69 and 420, a penis, the American flag, a gun, a camera.\nWait is that a {monster}, get ready for a fight.")
+      fight()
 
             
 
