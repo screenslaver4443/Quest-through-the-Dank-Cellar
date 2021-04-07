@@ -54,6 +54,8 @@ while choice != "Y" or "N" :
 mhealth = 20
 chealth = mhealth
 roomstraveled = 0
+room = 0
+proom = 0
 #Item Variables
 #The higher the variale the more damage/defense
 sword = 1
@@ -82,8 +84,9 @@ def fight():
     	mbonusdamage = -1
     	mbonushealth = 5
     if monster == 'ERROR':
-    	mbonusdamage = random.randint(-5,5)
-    	mbonushealth = random.randint(-5,5)
+    	mbonusdamage = random.randint(1,5)
+    	mbonushealth = random.randint(1,5)
+    
     	
     	
     
@@ -112,6 +115,8 @@ def fight():
                 break
         edamage = roomstraveled - armor - guard
         print(f"{monster} deals {edamage}")
+        if edamage < 1:
+        	edamage = 1
         chealth -= edamage
         if chealth <= 0 :
             print("You died")
@@ -130,8 +135,13 @@ def fight():
 
 # %%
 while True:
-    room = random.randint(1,3) #picks random room
+    clear()
+    while room == proom :
+       room = random.randint(1,5) #picks random room
+    
+    
     if room == 1 :
+        proom = 1
         print("\nYou enter a dank dungeon room covered in moss. It smells like the dead. There are skelletons chained up against the wall. \nThere is a chest in the room.")
         choice = input("Open the chest (Yes/No)")
         if choice == "Yes":
@@ -157,19 +167,44 @@ while True:
             print('you walk past the chest and leave the room')
         roomstraveled += 1
     if room == 2 :
+        proom=2
         monster = random.choice(normalmonsters)
         print(f"\nYou enter a dank room with wet & shiny walls\nas you look around you spot a {monster}\nyou prepare to fight drawing your sword.")
         fight()
         roomstraveled =+ 1
     if room == 3:
+    	proom=3
     	monster = random.choice(normalmonsters)
     	print(f"You enter a room covered in weird neon colours, and with weed, the numbers 69 and 420, a penis, the American flag, a gun, a camera.\nWait is that a {monster}, get ready for a fight.")
     	fight()
     	roomstraveled =+ 1
     if room == 4:
+    	proom =4
     	monster = 'corruptboss' #custom boss for this room
     	print('You enter a room covered in a purple and black checker pattern and before you stands a massive creature with black and purple fur, and it does not look happy to see a visitor.')
     	fight()
-    
-
-
+    	roomstraveled += 1
+    if room == 5 :
+    	proom=5
+    	monster = random.choice(normalmonsters)
+    	print(f'You enter a large gladitorial arena somehow and on the otherside of the arena is a {monster}')
+    	fight()
+    	print('due to your victory you recieve...')
+    	item = random.randint(1,3)
+    	if item == 1:
+         sword += 1
+         if sword > 1:
+           print("You found a better sword")
+         else:
+           print("You found a sword")
+            
+      if item == 2:
+          armor += 1
+          if armor > 1:
+            print("You found better armor")
+          else:
+            print("You found armor")
+     	if item == 3:
+            chealth = mhealth
+            print("You found a health potion (HP fully restored)")
+    	roomstraveled += 1
