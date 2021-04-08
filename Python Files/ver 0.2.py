@@ -21,19 +21,6 @@ def clear():
 
 
 # %%
-#Startup
-print("Booting")
-time.sleep(3)
-print("Complete")
-print("Testing for Y link...")
-time.sleep(3)
-print("Complete")
-print("Entering the DeltaScape")
-time.sleep(10)
-clear()
-
-
-# %%
 #intro
 print("choices are case sensitive")
 print("Hey you! \nYou're finally awake. \nYou're the latest guy to appear at the Delta Dungeon.\nThe entrance is just ahead, enter inside and try to make it to the end")
@@ -198,13 +185,13 @@ while True:
          else:
            print("You found a sword")
             
-      if item == 2:
+    	if item == 2:
           armor += 1
           if armor > 1:
             print("You found better armor")
           else:
             print("You found armor")
-     	if item == 3:
+    	if item == 3:
             chealth = mhealth
             print("You found a health potion (HP fully restored)")
     	roomstraveled += 1
