@@ -80,7 +80,7 @@ def fight():
     #calculatons
     guard = 0
     ehealth = 2 + roomstraveled + mbonushealth
-    edamage = 1+ roomstraveled - armor + mbonusdamage
+    edamage = 2 + roomstraveled - armor + mbonusdamage
     #beginning of the actual fight
     print(f"You engage the {monster}")
     strikeorder = random.randint(1,2) #determines who goes first
@@ -101,9 +101,9 @@ def fight():
                 guard += 1
                 break
         edamage = roomstraveled - armor - guard
-        print(f"{monster} deals {edamage}")
         if edamage < 1:
         	edamage = 1
+        print(f"{monster} deals {edamage}")
         chealth -= edamage
         if chealth <= 0 :
             print("You died")
